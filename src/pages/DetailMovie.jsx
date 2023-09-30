@@ -61,7 +61,7 @@ const DetailMovie = () => {
             backgroundPosition: "center",
           }}
         ></div>
-        <div className="absolute top-[16%] md:top-[40%] xl:top-[30%] md:left-40 right-0 bottom-0 transform">
+        <div className="absolute top-[30%] md:top-[40%] xl:top-[30%] md:left-40 right-0 bottom-0 transform">
           <div className="flex flex-col md:flex-row mx-4 items-center md:items-start sm:flex-col sm:w-10/12 sm:space-x-10">
             <div className="sm:w-1/2 mb-3">
               <img

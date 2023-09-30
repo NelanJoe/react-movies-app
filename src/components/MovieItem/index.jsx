@@ -6,7 +6,7 @@ const Movie = ({ movie }) => {
   return (
     <>
       <Link to={`/movie/${movie.id}`}>
-        <div className="flex flex-row md:flex-col space-x-4  md:space-x-0 shadow-md rounded-md px-4 py-4 w-full hover:shadow-xl md:w-[250px] md:hover:transform md:hover:-translate-y-4 transition-all ease-out duration-75">
+        <div className="flex flex-row md:flex-col space-x-4 md:space-x-0 shadow-md rounded-md px-4 py-4 w-full hover:shadow-xl md:w-[250px] md:hover:transform md:hover:-translate-y-4 transition-all ease-out duration-75">
           <div className="w-1/2 md:w-full">
             <img
               className="w-full h-full md:w-[250px] md:h-[250px] object-cover rounded-sm"
