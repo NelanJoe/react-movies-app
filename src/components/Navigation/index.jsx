@@ -1,5 +1,5 @@
+import Search from "../Search";
 import { Link } from "react-router-dom";
-import { FiSearch } from "react-icons/fi";
 
 const Navigation = () => {
   return (
@@ -7,19 +7,19 @@ const Navigation = () => {
       <Link to="/" className="text-4xl font-bold text-red-500">
         Movielist
       </Link>
-      <div className="relative w-1/2">
-        <input
-          type="text"
-          className="outline-none bg-transparent border rounded-full border-red-500 px-4 py-2 w-[100%] text-white"
-          placeholder="Search here...."
-        />
-        <div className="absolute top-0 right-0 transform translate-y-3 -translate-x-5 text-white">
-          <FiSearch />
-        </div>
-      </div>
-      <div>
-        <Link to="/popular-movies" className="font-semibold text-white">
-          Popular Movies
+      <Search />
+      <div className="flex flex-row justify-center items-center space-x-3">
+        <Link
+          to="/login"
+          className="text-red-500 px-6 py-2 bg-transparent border-2 border-red-500 hover:text-white hover:bg-red-600 after:bg-red-700 shadow-md rounded-full"
+        >
+          SignUp
+        </Link>
+        <Link
+          to="/login"
+          className="text-white px-6 py-2 bg-red-500 hover:bg-red-600 after:bg-red-700 shadow-md rounded-full"
+        >
+          Login
         </Link>
       </div>
     </nav>

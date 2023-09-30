@@ -49,7 +49,7 @@ const DetailMovie = () => {
 
   return (
     <>
-      <div className="w-full h-[700px] sm:h-[800px]">
+      <div className="w-full h-screen sm:h-[800px]">
         <div
           className="relative w-full h-full contrast-50 blur-sm"
           style={{
@@ -61,7 +61,7 @@ const DetailMovie = () => {
             backgroundPosition: "center",
           }}
         ></div>
-        <div className="absolute top-[22%] md:top-[40%] xl:top-[30%] md:left-40 right-0 bottom-0 transform">
+        <div className="absolute top-[16%] md:top-[40%] xl:top-[30%] md:left-40 right-0 bottom-0 transform">
           <div className="flex flex-col md:flex-row mx-4 items-center md:items-start sm:flex-col sm:w-10/12 sm:space-x-10">
             <div className="sm:w-1/2 mb-3">
               <img
@@ -76,13 +76,19 @@ const DetailMovie = () => {
               <h2 className="text-4xl sm:text-6xl font-semibold text-white">
                 {movie?.title}
               </h2>
-              <p className="text-white text-justify">{genres}</p>
               <div className="flex items-center space-x-2">
                 <HiMiniStar className="font-semibold text-yellow-500 outline-none border-none drop-shadow-md" />{" "}
                 <p className="font-semibold text-white">
                   {movie?.vote_average}
                 </p>
               </div>
+              <p className="text-base text-white">
+                Tagline:{" "}
+                <span className="italic text-white bg-red-500 px-2 py-1 rounded-full">{`"${
+                  movie?.tagline || "Not found tagline"
+                }"`}</span>
+              </p>
+              <p className="text-white text-justify">{genres}</p>
               <p className="text-white text-justify">{movie?.overview}</p>
               <div className="flex">
                 <a
