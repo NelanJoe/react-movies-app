@@ -49,7 +49,7 @@ const DetailMovie = () => {
 
   return (
     <>
-      <div className="w-full h-screen sm:h-[800px]">
+      <div className="w-full h-[100dvh] sm:h-[800px]">
         <div
           className="relative w-full h-full contrast-50 blur-sm"
           style={{
@@ -61,9 +61,9 @@ const DetailMovie = () => {
             backgroundPosition: "center",
           }}
         ></div>
-        <div className="absolute top-[30%] md:top-[40%] xl:top-[30%] md:left-40 right-0 bottom-0 transform">
+        <div className="absolute top-[28%] md:top-[40%] xl:top-[30%] md:left-40 right-0 bottom-0 transform">
           <div className="flex flex-col md:flex-row mx-4 items-center md:items-start sm:flex-col sm:w-10/12 sm:space-x-10">
-            <div className="sm:w-1/2 mb-3">
+            <div className="sm:w-1/2 mb-2 sm:mb-3">
               <img
                 src={`https://image.tmdb.org/t/p/original/${
                   movie?.backdrop_path || movie?.poster_path
@@ -72,8 +72,8 @@ const DetailMovie = () => {
                 className="w-full h-[250px] sm:h-full object-cover object-center rounded-xl shadow-md"
               />
             </div>
-            <div className="sm:w-1/2 break-words space-y-3">
-              <h2 className="text-4xl sm:text-6xl font-semibold text-white">
+            <div className="sm:w-1/2 break-words space-y-2 md:space-y-3">
+              <h2 className="text-3xl sm:text-6xl font-semibold text-white">
                 {movie?.title}
               </h2>
               <div className="flex items-center space-x-2">

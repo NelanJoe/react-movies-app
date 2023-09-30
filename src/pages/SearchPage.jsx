@@ -31,7 +31,9 @@ const SearchPage = () => {
   return (
     <Layout>
       <section className="my-12">
-        <p className="mb-4">Search movies {`"${title}"`}</p>
+        <p className="mb-4">
+          Search Movies <span>{`"${title}"`}</span>
+        </p>
         <MovieList movies={searchResult} />
       </section>
     </Layout>
