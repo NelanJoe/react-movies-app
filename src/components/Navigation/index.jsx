@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Navigation = () => {
   return (
-    <nav className="py-4 px-10 flex justify-between items-center">
+    <nav className="py-4 px-10 flex flex-col md:flex-row justify-between items-center">
       <Link to="/" className="text-4xl font-bold text-red-500">
         Movielist
       </Link>

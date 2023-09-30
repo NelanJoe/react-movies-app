@@ -19,7 +19,7 @@ const Search = () => {
   };
 
   return (
-    <div className="relative w-1/2">
+    <div className="relative w-full mb-3 md:mb-0 md:w-1/2">
       <form onSubmit={handleSubmit}>
         <input
           type="text"

@@ -60,13 +60,13 @@ export const Carousel = () => {
           );
         })}
       </div>
-      <div className="absolute top-[40%] left-1 md:top-1/2 cursor-pointer md:left-10">
+      <div className="absolute top-[50%] left-1 md:top-1/2 cursor-pointer md:left-10">
         <FiChevronLeft
           onClick={scrollPrev}
           className="hidden group-hover:block rounded-full bg-white shadow-sm w-8 h-8"
         />
       </div>
-      <div className="absolute top-[40%] right-1 md:top-1/2 cursor-pointer md:right-10">
+      <div className="absolute top-[50%] right-1 md:top-1/2 cursor-pointer md:right-10">
         <FiChevronRight
           onClick={scrollNext}
           className="hidden group-hover:block rounded-full bg-white shadow-sm w-8 h-8"
