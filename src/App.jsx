@@ -25,7 +25,7 @@ export default function App() {
             <Route path="/search" element={<SearchPage />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/login" element={<Login />} />
-            <Route path="*" element={<NotFoundPage />} />
+            <Route path="/*" element={<NotFoundPage />} />
           </Route>
         )
       )}
