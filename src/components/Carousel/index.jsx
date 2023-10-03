@@ -42,7 +42,7 @@ export const Carousel = () => {
 
   return (
     <div
-      className="overflow-hidden bg-gray-200 w-full h-[400px] mx-auto md:h-full group"
+      className="overflow-hidden bg-gray-200 w-full h-[480px] mx-auto md:h-full group"
       ref={emblaRef}
     >
       <div className="flex">
@@ -60,7 +60,7 @@ export const Carousel = () => {
                 key={movie?.id}
               >
                 <img
-                  className="w-full h-[400px] md:h-screen blur-[2px] contrast-50 object-cover"
+                  className="w-full h-screen md:h-screen blur-[2px] contrast-50 object-cover"
                   src={`https://image.tmdb.org/t/p/original/${
                     movie?.backdrop_path || movie.poster_path
                   }`}
