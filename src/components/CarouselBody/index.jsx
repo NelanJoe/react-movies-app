@@ -21,7 +21,11 @@ const CarouselBody = ({ movie }) => {
           }
         );
 
-        setIdTrailer(data?.results[0]?.key);
+        const getTrailer = data?.results.find(
+          (trailer) => trailer.type === "Trailer"
+        );
+
+        setIdTrailer(getTrailer?.key);
       } catch (error) {
         throw new Error(error);
       }

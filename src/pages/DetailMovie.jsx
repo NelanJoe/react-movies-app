@@ -30,10 +30,6 @@ const DetailMovie = () => {
       }
     };
 
-    getDetailMovie(id);
-  }, [AUTH_TOKEN, id]);
-
-  useEffect(() => {
     const getTrailerMovie = async (movieId) => {
       try {
         const { data } = await axios.get(
@@ -45,14 +41,19 @@ const DetailMovie = () => {
           }
         );
 
-        setIdTrailer(data?.results[0]?.key);
+        const getTrailer = data?.results.find(
+          (trailer) => trailer.type === "Trailer"
+        );
+
+        setIdTrailer(getTrailer?.key);
       } catch (error) {
         throw new Error(error);
       }
     };
 
-    getTrailerMovie(movie.id);
-  }, [AUTH_TOKEN, movie.id]);
+    getDetailMovie(id);
+    getTrailerMovie(id);
+  }, [AUTH_TOKEN, id]);
 
   const genres = movie?.genres?.map((genre) => genre.name).join(", ");
 
