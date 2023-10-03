@@ -73,21 +73,22 @@ const DetailMovie = () => {
             }')`,
             backgroundRepeat: "no-repeat",
             backgroundSize: "cover",
+            objectFit: "cover",
             backgroundPosition: "center",
           }}
         ></div>
-        <div className="absolute top-[28%] md:top-[40%] xl:top-[30%] md:left-40 right-0 bottom-0 transform">
-          <div className="flex flex-col md:flex-row mx-4 items-center md:items-start sm:flex-col sm:w-10/12 sm:space-x-10">
-            <div className="sm:w-1/2 mb-2 sm:mb-3">
+        <div className="absolute top-[25%] md:top-[30%] xl:top-[20%] md:left-40 right-0 bottom-0 transform">
+          <div className="flex flex-col md:flex-row mx-4 justify-center items-center md:items-start sm:flex-col sm:w-10/12">
+            <div className="md:w-2/6 mb-2 sm:mb-3">
               <img
                 src={`https://image.tmdb.org/t/p/original/${
-                  movie?.backdrop_path || movie?.poster_path
+                  movie?.poster_path || movie?.backdrop_path
                 }`}
                 alt={movie?.title}
-                className="w-full h-[250px] sm:h-full object-cover object-center rounded-xl shadow-md"
+                className="w-[800px] h-[250px] md:w-[400px] sm:h-full object-cover object-top rounded-xl shadow-md"
               />
             </div>
-            <div className="sm:w-1/2 break-words space-y-2 md:space-y-3">
+            <div className="md:w-1/2 break-words space-y-2 md:space-y-3">
               <h2 className="text-3xl sm:text-6xl font-semibold text-white">
                 {movie?.title}
               </h2>
@@ -97,9 +98,9 @@ const DetailMovie = () => {
                   {movie?.vote_average}
                 </p>
               </div>
-              <p className="text-base text-white">
+              <p className=" text-white">
                 Tagline:{" "}
-                <span className="italic text-white bg-red-500 px-2 py-1 rounded-full">{`"${
+                <span className="italic text-[12px] xl:text-base text-white bg-red-500 px-2 py-1 rounded-full">{`"${
                   movie?.tagline || "Not found tagline"
                 }"`}</span>
               </p>

@@ -46,7 +46,16 @@ const SearchPage = () => {
             </div>
           }
         >
-          <MovieList movies={searchResult} />
+          {searchResult.length ? (
+            <MovieList movies={searchResult} />
+          ) : (
+            <div className="grid place-content-center">
+              <p className="text-2xl font-semibold">
+                Not found data movies with title{" "}
+                <span className="bg-red-500 italic text-white rounded-md px-2">{`"${title}"`}</span>
+              </p>
+            </div>
+          )}
         </Suspense>
       </section>
     </Layout>
