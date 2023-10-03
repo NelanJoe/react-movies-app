@@ -5,6 +5,7 @@ import randomize from "../../utils/randomize";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import CarouselBody from "../CarouselBody";
+import { Suspense } from "react";
 
 export const Carousel = () => {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
@@ -45,20 +46,31 @@ export const Carousel = () => {
       ref={emblaRef}
     >
       <div className="flex">
-        {randomSlider.slice(0, 3)?.map((movie) => {
-          return (
-            <div className="embla__slide relative cursor-grab" key={movie?.id}>
-              <img
-                className="w-full h-[400px] md:h-screen blur-[2px] contrast-50 object-cover"
-                src={`https://image.tmdb.org/t/p/original/${
-                  movie?.backdrop_path || movie.poster_path
-                }`}
-                alt={movie?.title}
-              />
-              <CarouselBody movie={movie} />
+        <Suspense
+          fallback={
+            <div className="grid place-content-center">
+              <p>Loading....</p>
             </div>
-          );
-        })}
+          }
+        >
+          {randomSlider.slice(0, 3)?.map((movie) => {
+            return (
+              <div
+                className="embla__slide relative cursor-grab"
+                key={movie?.id}
+              >
+                <img
+                  className="w-full h-[400px] md:h-screen blur-[2px] contrast-50 object-cover"
+                  src={`https://image.tmdb.org/t/p/original/${
+                    movie?.backdrop_path || movie.poster_path
+                  }`}
+                  alt={movie?.title}
+                />
+                <CarouselBody movie={movie} />
+              </div>
+            );
+          })}
+        </Suspense>
       </div>
       <div className="absolute top-[50%] left-1 md:top-1/2 cursor-pointer md:left-10">
         <FiChevronLeft

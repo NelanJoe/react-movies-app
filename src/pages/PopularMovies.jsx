@@ -10,16 +10,20 @@ const PopularMovies = () => {
   const AUTH_TOKEN = import.meta.env.VITE_AUTH_TOKEN;
   useEffect(() => {
     const getPopularMovies = async () => {
-      const { data } = await axios.get(
-        `https://api.themoviedb.org/3/movie/popular`,
-        {
-          headers: {
-            Authorization: `Bearer ${AUTH_TOKEN}`,
-          },
-        }
-      );
+      try {
+        const { data } = await axios.get(
+          `https://api.themoviedb.org/3/movie/popular`,
+          {
+            headers: {
+              Authorization: `Bearer ${AUTH_TOKEN}`,
+            },
+          }
+        );
 
-      setData(data?.results);
+        setData(data?.results);
+      } catch (error) {
+        throw new Error(error);
+      }
     };
 
     getPopularMovies();

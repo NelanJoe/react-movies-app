@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { HiMiniStar } from "react-icons/hi2";
 import { FiPlay } from "react-icons/fi";
 import axios from "axios";
+import { Suspense } from "react";
 
 const DetailMovie = () => {
   const { id } = useParams();
@@ -13,16 +14,20 @@ const DetailMovie = () => {
 
   useEffect(() => {
     const getDetailMovie = async (movieId) => {
-      const { data } = await axios.get(
-        `https://api.themoviedb.org/3/movie/${movieId}`,
-        {
-          headers: {
-            Authorization: `Bearer ${AUTH_TOKEN}`,
-          },
-        }
-      );
+      try {
+        const { data } = await axios.get(
+          `https://api.themoviedb.org/3/movie/${movieId}`,
+          {
+            headers: {
+              Authorization: `Bearer ${AUTH_TOKEN}`,
+            },
+          }
+        );
 
-      setMovie(data);
+        setMovie(data);
+      } catch (error) {
+        throw new Error(error);
+      }
     };
 
     getDetailMovie(id);
@@ -30,16 +35,20 @@ const DetailMovie = () => {
 
   useEffect(() => {
     const getTrailerMovie = async (movieId) => {
-      const { data } = await axios.get(
-        `https://api.themoviedb.org/3/movie/${movieId}/videos`,
-        {
-          headers: {
-            Authorization: `Bearer ${AUTH_TOKEN}`,
-          },
-        }
-      );
+      try {
+        const { data } = await axios.get(
+          `https://api.themoviedb.org/3/movie/${movieId}/videos`,
+          {
+            headers: {
+              Authorization: `Bearer ${AUTH_TOKEN}`,
+            },
+          }
+        );
 
-      setIdTrailer(data?.results[0]?.key);
+        setIdTrailer(data?.results[0]?.key);
+      } catch (error) {
+        throw new Error(error);
+      }
     };
 
     getTrailerMovie(movie.id);
@@ -48,7 +57,13 @@ const DetailMovie = () => {
   const genres = movie?.genres?.map((genre) => genre.name).join(", ");
 
   return (
-    <>
+    <Suspense
+      fallback={
+        <div className="grid place-content-center">
+          <p>Loading....</p>
+        </div>
+      }
+    >
       <div className="w-full h-[100dvh] sm:h-[800px]">
         <div
           className="relative w-full h-full contrast-50 blur-sm"
@@ -105,7 +120,7 @@ const DetailMovie = () => {
           </div>
         </div>
       </div>
-    </>
+    </Suspense>
   );
 };
 

@@ -3,6 +3,7 @@ import Layout from "../layouts/layout";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import MovieList from "../components/MovieList";
+import { Suspense } from "react";
 
 const SearchPage = () => {
   const [searchParams] = useSearchParams();
@@ -13,16 +14,20 @@ const SearchPage = () => {
   const AUTH_TOKEN = import.meta.env.VITE_AUTH_TOKEN;
   useEffect(() => {
     const getSearchMovieData = async (keyword) => {
-      const { data } = await axios.get(
-        `https://api.themoviedb.org/3/search/movie?query=${keyword}`,
-        {
-          headers: {
-            Authorization: `Bearer ${AUTH_TOKEN}`,
-          },
-        }
-      );
+      try {
+        const { data } = await axios.get(
+          `https://api.themoviedb.org/3/search/movie?query=${keyword}`,
+          {
+            headers: {
+              Authorization: `Bearer ${AUTH_TOKEN}`,
+            },
+          }
+        );
 
-      setSearchResult(data?.results);
+        setSearchResult(data?.results);
+      } catch (error) {
+        throw new Error(error);
+      }
     };
 
     getSearchMovieData(title || "");
@@ -34,7 +39,15 @@ const SearchPage = () => {
         <p className="mb-4">
           Search Movies <span>{`"${title}"`}</span>
         </p>
-        <MovieList movies={searchResult} />
+        <Suspense
+          fallback={
+            <div className="grid place-content-center">
+              <p>Loading content...</p>
+            </div>
+          }
+        >
+          <MovieList movies={searchResult} />
+        </Suspense>
       </section>
     </Layout>
   );

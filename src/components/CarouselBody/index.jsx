@@ -10,16 +10,20 @@ const CarouselBody = ({ movie }) => {
   const AUTH_TOKEN = import.meta.env.VITE_AUTH_TOKEN;
   useEffect(() => {
     const getTrailerMovie = async (movieId) => {
-      const { data } = await axios.get(
-        `https://api.themoviedb.org/3/movie/${movieId}/videos`,
-        {
-          headers: {
-            Authorization: `Bearer ${AUTH_TOKEN}`,
-          },
-        }
-      );
+      try {
+        const { data } = await axios.get(
+          `https://api.themoviedb.org/3/movie/${movieId}/videos`,
+          {
+            headers: {
+              Authorization: `Bearer ${AUTH_TOKEN}`,
+            },
+          }
+        );
 
-      setIdTrailer(data?.results[0]?.key);
+        setIdTrailer(data?.results[0]?.key);
+      } catch (error) {
+        throw new Error(error);
+      }
     };
 
     getTrailerMovie(movie.id);

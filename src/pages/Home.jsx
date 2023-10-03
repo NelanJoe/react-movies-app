@@ -11,16 +11,20 @@ const Home = () => {
 
   useEffect(() => {
     const getPopularMovies = async () => {
-      const { data } = await axios.get(
-        `https://api.themoviedb.org/3/movie/popular`,
-        {
-          headers: {
-            Authorization: `Bearer ${AUTH_TOKEN}`,
-          },
-        }
-      );
+      try {
+        const { data } = await axios.get(
+          `https://api.themoviedb.org/3/movie/popular`,
+          {
+            headers: {
+              Authorization: `Bearer ${AUTH_TOKEN}`,
+            },
+          }
+        );
 
-      setPopularMovies(data?.results);
+        setPopularMovies(data?.results);
+      } catch (error) {
+        throw new Error(error);
+      }
     };
 
     getPopularMovies();
