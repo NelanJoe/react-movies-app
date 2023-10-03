@@ -37,7 +37,7 @@ const PopularMovies = () => {
         <h2 className="my-8 text-center font-semibold text-4xl">
           Popular Movies
         </h2>
-        <div className="flex flex-wrap justify-center gap-6">
+        <div className="flex flex-col justify-center md:flex-row md:flex-wrap space-y-4 md:space-y-0 md:gap-8">
           {randomizePopularMovies?.map((movie) => {
             return <MovieItem key={movie.id} movie={movie} />;
           })}
