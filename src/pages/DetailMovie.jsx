@@ -77,8 +77,8 @@ const DetailMovie = () => {
             backgroundPosition: "center",
           }}
         ></div>
-        <div className="absolute top-[25%] md:top-[30%] xl:top-[20%] md:left-40 right-0 bottom-0 transform">
-          <div className="flex flex-col md:flex-row mx-4 justify-center items-center md:items-start sm:flex-col sm:w-10/12">
+        <div className="absolute top-[28%] md:top-[30%] xl:top-[20%] md:left-40 right-0 bottom-0 transform">
+          <div className="flex flex-col md:flex-row mx-4 justify-center items-center md:items-start sm:flex-col sm:w-10/12 md:space-x-6">
             <div className="md:w-2/6 mb-2 sm:mb-3">
               <img
                 src={`https://image.tmdb.org/t/p/original/${

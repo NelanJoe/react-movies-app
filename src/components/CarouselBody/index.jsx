@@ -1,8 +1,9 @@
 import axios from "axios";
 import PropTypes from "prop-types";
 import { useState, useEffect } from "react";
-import { FiPlay } from "react-icons/fi";
+import { FiPlay, FiInfo } from "react-icons/fi";
 import { HiMiniStar } from "react-icons/hi2";
+import { Link } from "react-router-dom";
 
 const CarouselBody = ({ movie }) => {
   const [idTrailer, setIdTrailer] = useState("");
@@ -39,16 +40,26 @@ const CarouselBody = ({ movie }) => {
       <p className="text-white text-sm md:text-base text-justify">
         {movie?.overview}
       </p>
-      <div className="flex">
-        <a
-          className="px-4 py-2 flex items-center gap-2 rounded-full text-white bg-red-500 hover:bg-red-600 focus:bg-red-800 cursor-pointer"
-          href={`https://www.youtube.com/watch?v=${idTrailer}`}
-          target="_blank"
-          rel="noreferrer"
-        >
-          <FiPlay />
-          <span>Watch Trailer</span>
-        </a>
+      <div className="flex flex-col sm:flex-row justify-start items-start md:items-center space-y-2 sm:space-x-4">
+        <div className="flex">
+          <a
+            className="px-4 py-2 flex items-center gap-2 rounded-full text-white bg-red-500 hover:bg-red-600 focus:bg-red-800 cursor-pointer"
+            href={`https://www.youtube.com/watch?v=${idTrailer}`}
+            target="_blank"
+            rel="noreferrer"
+          >
+            <FiPlay />
+            <span>Watch Trailer</span>
+          </a>
+        </div>
+        <div>
+          <Link
+            to={`/movie/${movie?.id}`}
+            className="px-4 py-2 flex items-center gap-2 rounded-full text-white bg-red-500 hover:bg-red-600 focus:bg-red-800 cursor-pointer"
+          >
+            <FiInfo /> <span>See Detail</span>
+          </Link>
+        </div>
       </div>
     </div>
   );
